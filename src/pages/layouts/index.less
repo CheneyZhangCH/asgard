@@ -1,0 +1,53 @@
+@import '~antd/dist/antd.less';
+
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-top: 50px;
+}
+
+.nav-bar {
+  width: 100%;
+  height: 50px;
+  background: #444;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .nav-bar-inner {
+    width: 90%;
+    min-width: 960px;
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.row-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.row-center-col-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.col-center-row-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
