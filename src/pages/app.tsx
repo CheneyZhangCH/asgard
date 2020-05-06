@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
-import store from '../common/store';
+import store from '@/common/store';
 
 const Count = props => (
   <div>

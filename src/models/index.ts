@@ -1,5 +1,6 @@
-import example from './example';
+import test from './test';
 
+console.log(test);
 export default {
-  example,
+  test: test,
 };

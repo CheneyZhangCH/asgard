@@ -10,12 +10,12 @@ const ENV_prefix = window.location.href.indexOf('uat-') !== -1 ? `uat-` : '';
 const baseURL = /^http/.test(apiHost)
   ? apiHost
   : `${window.location.protocol}//${ENV_prefix}${apiHost}`;
-const defaultConfig = {
+const defaultConfig: AxiosRequestConfig = {
   baseURL,
   headers: {
     'Content-Type': 'application/json',
     'X-Requested-With': 'XMLHttpRequest',
-    AppId: AppId,
+    // AppId: AppId,
   },
   responseType: 'json',
   timeout: 10000,

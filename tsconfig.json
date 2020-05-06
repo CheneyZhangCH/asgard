@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "noImplicitThis": false,
+    "types": [],
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
@@ -7,19 +9,33 @@
     "jsx": "react",
     "esModuleInterop": true,
     "sourceMap": true,
-    "baseUrl": "./",
+    "inlineSources": true,
+    "sourceRoot": "/",
+    "baseUrl": ".",
     "strict": true,
+    "allowJs": false,
     "paths": {
-      "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"]
+      "@@/*": ["src/.umi/*"],
+      "@/*": ["src/*"]
     },
-    "allowSyntheticDefaultImports": true
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "resolveJsonModule": true,
+    "noEmit": true
   },
   "include": [
     "mock/**/*",
+    "src/*",
     "src/**/*",
     "config/**/*",
     ".umirc.ts",
-    "typings.d.ts"
-  ]
+    "./typings.d.ts"
+  ],
+  "exclude": ["node_modules", "doc", "dist", "mock", "build"]
 }
