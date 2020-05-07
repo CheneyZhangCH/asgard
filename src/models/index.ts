@@ -1,6 +1,5 @@
-import test from './test';
+import login from './login';
 
-console.log(test);
 export default {
-  test: test,
+  login,
 };

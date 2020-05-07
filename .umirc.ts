@@ -12,12 +12,21 @@ export default defineConfig({
       exact: true,
     },
     {
-      path: '/',
-      component: './layouts/index',
-      // routes: [
-      //   { path: '/list', component: 'list' },
-      //   { path: '/admin', component: 'admin' },
-      // ],
+      path: '/login',
+      component: './login/login',
+      exact: true,
+    },
+    {
+      path: '/*',
+      component: './layout/layout',
+      exact: true,
+      routes: [
+        { path: '/', component: './index/index', exact: true },
+      ],
     },
   ],
+  antd: {},
+  dva: false,
+  dynamicImport: false,
+  title: '米果的小木屋',
 });

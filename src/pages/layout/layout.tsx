@@ -1,5 +1,5 @@
 import { React } from '@/common';
-import './index.less';
+import './layout.less';
 
 interface ILayoutProps {
   children?: React.ReactNode | React.ReactNodeArray;
@@ -33,7 +33,7 @@ export default (props: ILayoutProps) => {
           </ul>
         </div>
       </div>
-      <div className="content" style={{ padding: 20 }}>
+      <div className="main">
         {props.children}
       </div>
     </>

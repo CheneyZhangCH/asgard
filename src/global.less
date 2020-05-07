@@ -1,0 +1,217 @@
+@import (reference) '../node_modules/antd/lib/style/themes/default.less';
+@import '~antd/dist/antd.less';
+
+// Global
+html,body {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  font-size: 14px !important; // amfe-flexible 会调整 body font-size
+  background: white;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #e1e1e1;
+}
+
+.disable-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent; /* Chrome/Safari/Webkit */
+  }
+}
+
+//react-images-viewer
+@media (max-width: @screen-sm-max) {
+  #viewerBackdrop {
+    padding: 40px;
+  }
+}
+// react-split-pane
+.SplitPane {
+  background: white;
+}
+
+.Resizer {
+  z-index: 1;
+  box-sizing: border-box;
+  background: #d0d0d0;
+  background-clip: padding-box;
+}
+
+.Resizer:hover {
+  transition: all 0.375s ease;
+}
+
+.Resizer.horizontal {
+  width: 100%;
+  height: 11px;
+  margin: -5px 0;
+  cursor: row-resize;
+  border-top: 5px solid rgba(255, 255, 255, 0);
+  border-bottom: 5px solid rgba(255, 255, 255, 0);
+}
+
+.Resizer.horizontal:hover {
+  border-top: 5px solid #ededed;
+  border-bottom: 5px solid #ededed;
+}
+
+.Resizer.vertical {
+  width: 11px;
+  margin: 0 -5px;
+  cursor: col-resize;
+  border-right: 5px solid rgba(255, 255, 255, 0);
+  border-left: 5px solid rgba(255, 255, 255, 0);
+}
+
+.Resizer.vertical:hover {
+  border-right: 5px solid #ededed;
+  border-left: 5px solid #ededed;
+}
+
+.Resizer.disabled {
+  cursor: not-allowed;
+}
+
+.Resizer.disabled:hover {
+  border-color: transparent;
+}
+
+// react-color
+.twitter-picker {
+  overflow: hidden;
+  box-shadow: none !important;
+}
+
+// ant design
+.ant-layout {
+  background: white !important;
+}
+
+.ant-table.ant-table-scroll-position-left .ant-table-fixed-left {
+  box-shadow: 6px 0 6px -4px rgba(0, 0, 0, 0.15) !important;
+}
+
+// ant design from
+
+.fullWidthFormItem {
+  width: 100% !important;
+  padding: 0 4.5px !important;
+  & > .ant-form-item-control-wrapper {
+    width: 100%;
+  }
+  .ant-calendar-picker {
+    width: 100%;
+  }
+}
+
+.fullWidthButton {
+  width: 100%;
+}
+
+.fullWidthFormItemWithoutPadding {
+  width: 100% !important;
+  padding: 0 !important;
+  & > div {
+    width: 100%;
+  }
+}
+
+.childItemFullWidth {
+  & > div {
+    width: 100% !important;
+  }
+  .ant-form-item-control {
+    line-height: 32px;
+  }
+}
+
+.formInputArea {
+  textarea {
+    margin-top: 4px;
+  }
+}
+
+// ant design table
+.hide-plus .ant-table-row-expand-icon-cell span {
+  display: none;
+}
+
+.resizable-table .react-resizable {
+  position: relative;
+  background-clip: padding-box;
+}
+
+.resizable-table .react-resizable-handle {
+  position: absolute;
+  right: -5px;
+  bottom: 0;
+  z-index: 1;
+  width: 10px;
+  height: 100%;
+  cursor: col-resize;
+  background: none;
+}
+
+// ant design mobile
+.am-tabs-default-bar-top {
+  background-color: transparent !important;
+}
+
+.am-tabs {
+  height: unset;
+}
+
+// react-full-screen
+.fullscreen {
+  height: 100%;
+}
+
+// react-images
+.react-images__view-image {
+  max-height: 86vh !important;
+}
+
+.react-grid-item.react-grid-placeholder {
+  background-color: transparent;
+}
+
+// forman
+.forman.modal {
+  margin-bottom: -18px;
+}
+.forman {
+  .ant-input-number {
+    width: 100%;
+  }
+}
+
+.inline-search {
+  .ant-row.ant-form-item {
+    margin-bottom: 0;
+  }
+}
+
+// AMap
+.amap-info-close {
+  right: 2px !important;
+}
+
+#infoWindow {
+  p {
+    margin-bottom: 6px;
+  }
+}
