@@ -2,16 +2,17 @@ import { React, customValidator } from '@/common';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { PhoneOutlined, LockOutlined } from '@ant-design/icons';
 import './login.less';
-import { useDispatch } from "@/common/hooks";
+import { useDispatch } from '@/common/hooks';
+import { Store } from 'antd/lib/form/interface';
 
-const Login = () => {
-  const dispatch = useDispatch()
+const Login: React.FC = () => {
+  const dispatch = useDispatch();
   console.log(dispatch);
-  const onFinish = values => {
+  const onFinish = (values: Store) => {
     console.log('Received values of form: ', values);
     dispatch.login.login(values).then(res => {
       console.log(res);
-    })
+    });
   };
 
   return (

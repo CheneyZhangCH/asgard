@@ -78,7 +78,7 @@ const R = <T = ResponseData<any>>(options: AxiosRequestConfig): Promise<T> => {
   }
 
   return axios({ ...defaultConfig, ...options, url })
-    .then((resp: AxiosResponse) => {
+    .then((resp: AxiosResponse<T>) => {
       return resp.data;
     })
     .catch(resp => {
