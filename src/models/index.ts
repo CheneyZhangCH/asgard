@@ -1,5 +1,9 @@
-import login from './login';
+import { login } from './login';
 
-export default {
+export interface RootModel {
+  login: typeof login;
+}
+
+export const models: RootModel = {
   login,
 };
