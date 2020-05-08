@@ -53,15 +53,6 @@ interface WhateverKV {
 
 type AnyPayload = any;
 
-interface Dispatch<S> {
-  <A extends Action>(action: A): Promise<any>;
-  [whatever: string]: any;
-}
-
-interface DispatchProp<A extends Action = AnyAction> {
-  dispatch: Dispatch<A>;
-}
-
 interface APIData<T = any> {
   code: number;
   data: T;

@@ -1,14 +1,13 @@
-export { ColumnProps, TableProps } from 'antd/lib/table'
-import { ColumnProps } from 'antd/lib/table'
-export { SelectValue } from 'antd/lib/select'
-export { Moment } from 'moment'
+export { ColumnProps, TableProps } from 'antd/lib/table';
+import { ColumnProps } from 'antd/lib/table';
+export { SelectValue } from 'antd/lib/select';
+export { Moment } from 'moment';
 // export type { RouteComponentProps } from 'react-router'
-export type { DispatchType, RootState, RematchDispatch } from '@/common/store'
-import { DispatchType } from '@/common/store'
-export { ClickParam } from 'antd/lib/menu'
+import { Dispatch } from '@/common/store';
+export { ClickParam } from 'antd/lib/menu';
 
 export interface DispatchProp {
-  dispatch: DispatchType
+  dispatch: Dispatch;
 }
 
 export enum ColumnType {
@@ -36,8 +35,7 @@ export enum ColumnType {
 }
 
 export interface AFLColumnProps<T = any> extends ColumnProps<T> {
-  type?: ColumnType
-  visible?: boolean
-  digit?: number
+  type?: ColumnType;
+  visible?: boolean;
+  digit?: number;
 }
-
