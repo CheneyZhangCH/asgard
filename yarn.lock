@@ -10575,6 +10575,17 @@ react-redux@^7.1.0:
     prop-types "^15.7.2"
     react-is "^16.9.0"
 
+react-redux@^7.2.0:
+  version "7.2.0"
+  resolved "http://r.cnpmjs.org/react-redux/download/react-redux-7.2.0.tgz#f970f62192b3981642fec46fd0db18a074fe879d"
+  integrity sha1-+XD2IZKzmBZC/sRv0NsYoHT+h50=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    hoist-non-react-statics "^3.3.0"
+    loose-envify "^1.4.0"
+    prop-types "^15.7.2"
+    react-is "^16.9.0"
+
 react-responsive@^8.0.1:
   version "8.0.3"
   resolved "https://registry.npm.taobao.org/react-responsive/download/react-responsive-8.0.3.tgz#ceb84205359b6032d306650e51490dc1f63d907b"
