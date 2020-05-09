@@ -1,4 +1,4 @@
-import { R } from '@/common'
+import { Cookies, R } from '@/common'
 import { Dispatch } from '@/common/store'
 
 export const login = {
@@ -8,31 +8,25 @@ export const login = {
   reducers: {
     loginData(_: AnyState, payload: AnyPayload) {
       if (payload && payload.data && payload.data.token) {
-        localStorage.setItem('modules', payload.data.modules)
-        localStorage.setItem('token', payload.data.token)
+        Cookies.set('token', payload.data.token)
       }
       return payload.data || { token: null }
     },
   },
   effects: (dispatch: Dispatch) => ({
     async login(payload: any) {
-      const resp = await R({
+      const res = await R({
         url: '/api/auth/login',
         method: 'POST',
         data: payload,
       })
-      console.log(resp)
-      dispatch.login.loginData(resp.data)
+      dispatch.login.loginData(res)
+      return res
     },
     async logOut() {
-      localStorage.removeItem('token')
-      localStorage.removeItem('USER_NAME')
+      Cookies.remove('token')
       return {
         token: null,
-        modules: [],
-        user: {
-          name: null,
-        },
       }
     },
   }),

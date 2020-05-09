@@ -1,4 +1,4 @@
-import { defineConfig } from 'umi';
+import { defineConfig } from 'umi'
 
 export default defineConfig({
   nodeModulesTransform: {
@@ -22,6 +22,7 @@ export default defineConfig({
       exact: true,
       routes: [
         { path: '/', component: './index/index', exact: true },
+        { path: '/article/new', component: './article/new', exact: true },
       ],
     },
   ],
@@ -29,4 +30,4 @@ export default defineConfig({
   dva: false,
   dynamicImport: false,
   title: '米果的小木屋',
-});
+})

@@ -1,7 +1,7 @@
 import { message } from 'antd'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 // import { Sentry } from '@/common'
-import { router } from '@/common'
+import { Cookies, router } from '@/common'
 import { qsStringify } from './search'
 
 const LOGIN_ERROR_CODE = 10300001
@@ -23,7 +23,7 @@ const defaultConfig: AxiosRequestConfig = {
 }
 
 axios.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token')
+  const token = Cookies.get('token')
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }

@@ -1,20 +1,22 @@
-import { React } from '@/common';
-import './layout.less';
+import { Cookies, React, router } from '@/common'
+import { useDispatch, useState } from '@/common/hooks'
+import { Button } from '@/components'
+import './layout.less'
 
 interface ILayoutProps {
-  children?: React.ReactNode | React.ReactNodeArray;
-  [key: string]: any;
+  children?: React.ReactNode | React.ReactNodeArray
+  [key: string]: any
 }
 
 export default (props: ILayoutProps) => {
-  const menus = [
-    { type: 'a', label: '首页', value: '/' },
-    { type: 'a', label: '新手入门', value: '/getStart' },
-    { type: 'a', label: 'API', value: '/api' },
-    { type: 'a', label: '关于', value: '/about' },
-    { type: 'a', label: '注册', value: '/signIn' },
-    { type: 'a', label: '登录', value: '/login' },
-  ];
+  const dispatch = useDispatch()
+  const [hasLogin, setHasLogin] = useState(Cookies.get('token') as boolean)
+  const logout = () => {
+    dispatch.login.logOut().then(() => {
+      setHasLogin(false)
+      router.push('/')
+    })
+  }
   return (
     <>
       <div className="nav-bar">
@@ -26,16 +28,23 @@ export default (props: ILayoutProps) => {
             </div>
           </div>
 
-          <ul className="menu row-center">
-            {menus.map((item, index) => (
-              <li key={item.value + index}>{item.label}</li>
-            ))}
-          </ul>
+          <div className="menu row-center">
+            <Button type="link" href="/article/new">
+              发布话题
+            </Button>
+            {hasLogin ? (
+              <Button type="link" onClick={logout}>
+                登出
+              </Button>
+            ) : (
+              <Button type="link" href="/login">
+                登录
+              </Button>
+            )}
+          </div>
         </div>
       </div>
-      <div className="main">
-        {props.children}
-      </div>
+      <div className="main">{props.children}</div>
     </>
-  );
-};
+  )
+}

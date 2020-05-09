@@ -1,19 +1,20 @@
-import { React, customValidator } from '@/common';
-import { Form, Input, Button, Checkbox } from 'antd';
-import { PhoneOutlined, LockOutlined } from '@ant-design/icons';
-import './login.less';
-import { useDispatch } from '@/common/hooks';
-import { Store } from 'antd/lib/form/interface';
+import { React, customValidator, qs, router } from '@/common'
+import { Form, Input, Button, Checkbox } from 'antd'
+import { PhoneOutlined, LockOutlined } from '@ant-design/icons'
+import './login.less'
+import { useDispatch } from '@/common/hooks'
+import { Store } from 'antd/lib/form/interface'
 
 const Login: React.FC = () => {
-  const dispatch = useDispatch();
-  console.log(dispatch);
+  const dispatch = useDispatch()
   const onFinish = (values: Store) => {
-    console.log('Received values of form: ', values);
-    dispatch.login.login(values).then(res => {
-      console.log(res);
-    });
-  };
+    dispatch.login.login(values).then((res: ResponseData) => {
+      if (res.code === 200) {
+        const query = qs.parse(location.search, { ignoreQueryPrefix: true })
+        router.replace(query.redirect ?? '/')
+      }
+    })
+  }
 
   return (
     <div className="login-wrapper">
@@ -25,10 +26,7 @@ const Login: React.FC = () => {
       >
         <Form.Item
           name="username"
-          rules={[
-            { required: true, message: '请输入手机号码' },
-            customValidator.phoneNoRule,
-          ]}
+          rules={[{ required: true, message: '请输入手机号码' }, customValidator.phoneNoRule]}
         >
           <Input
             prefix={<PhoneOutlined className="site-form-item-icon" />}
@@ -62,18 +60,14 @@ const Login: React.FC = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
+          <Button type="primary" htmlType="submit" className="login-form-button">
             登录
           </Button>
           {/*Or <a href="">register now!</a>*/}
         </Form.Item>
       </Form>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
