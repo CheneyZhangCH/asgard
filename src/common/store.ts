@@ -1,6 +1,6 @@
-import { init, RematchDispatch } from '@rematch/core';
-import { models, RootModel } from '../models';
-import createLoadingPlugin from '@rematch/loading';
+import { init, RematchDispatch } from '@rematch/core'
+import { models, RootModel } from '../models'
+import createLoadingPlugin from '@rematch/loading'
 
 const loading = createLoadingPlugin({
   asNumber: true,
@@ -20,15 +20,15 @@ const loading = createLoadingPlugin({
     'commoditySystem/queryProducts',
     'commoditySystem/getProductDetail',
   ],
-});
+})
 
 export const store = init<RootModel>({
   models,
   plugins: [loading],
-});
+})
 
-window.Store = store;
+window.Store = store
 
-export type Dispatch = RematchDispatch<RootModel>;
+export type Dispatch = RematchDispatch<RootModel>
 
-export const dispatch: Dispatch = store.dispatch;
+export const dispatch: Dispatch = store.dispatch

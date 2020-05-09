@@ -1,15 +1,15 @@
-import { message } from 'antd';
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { message } from 'antd'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 // import { Sentry } from '@/common'
-import { router } from '@/common';
-import { qsStringify } from './search';
+import { router } from '@/common'
+import { qsStringify } from './search'
 
-const LOGIN_ERROR_CODE = 10300001;
+const LOGIN_ERROR_CODE = 10300001
 
-const ENV_prefix = window.location.href.indexOf('uat-') !== -1 ? `uat-` : '';
+const ENVPrefix = window.location.href.indexOf('uat-') !== -1 ? `uat-` : ''
 const baseURL = /^http/.test(apiHost)
   ? apiHost
-  : `${window.location.protocol}//${ENV_prefix}${apiHost}`;
+  : `${window.location.protocol}//${ENVPrefix}${apiHost}`
 const defaultConfig: AxiosRequestConfig = {
   baseURL,
   headers: {
@@ -20,74 +20,72 @@ const defaultConfig: AxiosRequestConfig = {
   responseType: 'json',
   timeout: 10000,
   validateStatus: (status: number) => status >= 200 && status < 300,
-};
+}
 
-axios.interceptors.request.use(config => {
-  const token = localStorage.getItem('token');
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token')
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = `Bearer ${token}`
   }
 
-  return config;
-});
+  return config
+})
 
-axios.interceptors.response.use(response => {
+axios.interceptors.response.use((response) => {
   if (response.data && response.data.code === LOGIN_ERROR_CODE) {
-    localStorage.removeItem('token');
-    router.gotoLogin();
+    localStorage.removeItem('token')
+    router.gotoLogin()
   }
   if (response.data && response.data.code > 200) {
-    message.error(response.data.resultMessage);
+    message.error(response.data.resultMessage)
   }
-  return response;
-});
+  return response
+})
 
-const IGNORE_ERROR: any[] = [];
+const IGNORE_ERROR: any[] = []
 axios.interceptors.response.use(
-  config => config,
-  error => {
+  (config) => config,
+  (error) => {
     // Sentry.captureException(error)
     if (error.config && error.config.method === 'options') {
       // do noting
     } else if (error.response && error.response.status >= 500) {
-      if (IGNORE_ERROR.some(path => error.config.url.indexOf(path) !== -1)) {
-        return;
+      if (IGNORE_ERROR.some((path) => error.config.url.indexOf(path) !== -1)) {
+        return
       }
 
-      console.error(error);
+      console.error(error)
       message.error(
         `${error.response.statusText} (${error.response.status}) : ${error.request.responseURL} `,
-      );
-    } else if (
-      (error.response && error.response.status === 408) ||
-      error.code === 'ECONNABORTED'
-    ) {
-      message.error(`请求超时 : ${error.config.url}`);
+      )
+    } else if ((error.response && error.response.status === 408) || error.code === 'ECONNABORTED') {
+      message.error(`请求超时 : ${error.config.url}`)
     } else if (error.response && error.response.status === 404) {
       // 日志收集!
     }
-    return Promise.reject(error);
+    return Promise.reject(error)
   },
-);
+)
 
 const R = <T = ResponseData<any>>(options: AxiosRequestConfig): Promise<T> => {
-  let { url, method = 'GET', data } = options;
+  // eslint-disable-next-line prefer-const
+  let { url, method = 'GET', data } = options
 
   if (method === 'GET' && data) {
-    url = `${url}?${qsStringify(data)}`;
+    url = `${url}?${qsStringify(data)}`
   }
 
   return axios({ ...defaultConfig, ...options, url })
     .then((resp: AxiosResponse<T>) => {
-      return resp.data;
+      return resp.data
     })
-    .catch(resp => {
+    .catch((resp) => {
       if (resp.response && resp.response.data && resp.response.data.message) {
-        message.error(resp.response.data.message);
+        message.error(resp.response.data.message)
       }
-      return Promise.reject(resp);
-    });
-};
+      return Promise.reject(resp)
+    })
+}
 
-window.R = R;
-export default R;
+window.R = R
+export default R

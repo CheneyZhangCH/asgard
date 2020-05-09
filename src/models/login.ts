@@ -1,5 +1,5 @@
-import { R } from '@/common';
-import { Dispatch } from '@/common/store';
+import { R } from '@/common'
+import { Dispatch } from '@/common/store'
 
 export const login = {
   state: {
@@ -8,10 +8,10 @@ export const login = {
   reducers: {
     loginData(_: AnyState, payload: AnyPayload) {
       if (payload && payload.data && payload.data.token) {
-        localStorage.setItem('modules', payload.data.modules);
-        localStorage.setItem('token', payload.data.token);
+        localStorage.setItem('modules', payload.data.modules)
+        localStorage.setItem('token', payload.data.token)
       }
-      return payload.data || { token: null };
+      return payload.data || { token: null }
     },
   },
   effects: (dispatch: Dispatch) => ({
@@ -20,20 +20,20 @@ export const login = {
         url: '/api/auth/login',
         method: 'POST',
         data: payload,
-      });
-      console.log(resp);
-      dispatch.login.loginData(resp.data);
+      })
+      console.log(resp)
+      dispatch.login.loginData(resp.data)
     },
     async logOut() {
-      localStorage.removeItem('token');
-      localStorage.removeItem('USER_NAME');
+      localStorage.removeItem('token')
+      localStorage.removeItem('USER_NAME')
       return {
         token: null,
         modules: [],
         user: {
           name: null,
         },
-      };
+      }
     },
   }),
-};
+}
