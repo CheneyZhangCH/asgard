@@ -2051,6 +2051,16 @@
     hoist-non-react-statics "^3.3.0"
     redux "^4.0.0"
 
+"@types/react-redux@^7.1.8":
+  version "7.1.8"
+  resolved "http://r.cnpmjs.org/@types/react-redux/download/@types/react-redux-7.1.8.tgz#3631feb559f7858d6ad9eea1d6ef41fa64fe7205"
+  integrity sha1-NjH+tVn3hY1q2e6h1u9B+mT+cgU=
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+    redux "^4.0.0"
+
 "@types/react-router-config@5.0.1", "@types/react-router-config@^5.0.1":
   version "5.0.1"
   resolved "https://registry.npm.taobao.org/@types/react-router-config/download/@types/react-router-config-5.0.1.tgz#54da8418190ee47484dee279975e2b8038fb8b5d"
@@ -10574,20 +10584,9 @@ react-native-swipeout@^2.2.2:
     prop-types "^15.5.10"
     react-tween-state "^0.1.5"
 
-react-redux@^7.1.0:
+react-redux@^7.1.0, react-redux@^7.2.0:
   version "7.2.0"
   resolved "https://registry.npm.taobao.org/react-redux/download/react-redux-7.2.0.tgz#f970f62192b3981642fec46fd0db18a074fe879d"
-  integrity sha1-+XD2IZKzmBZC/sRv0NsYoHT+h50=
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    hoist-non-react-statics "^3.3.0"
-    loose-envify "^1.4.0"
-    prop-types "^15.7.2"
-    react-is "^16.9.0"
-
-react-redux@^7.2.0:
-  version "7.2.0"
-  resolved "http://r.cnpmjs.org/react-redux/download/react-redux-7.2.0.tgz#f970f62192b3981642fec46fd0db18a074fe879d"
   integrity sha1-+XD2IZKzmBZC/sRv0NsYoHT+h50=
   dependencies:
     "@babel/runtime" "^7.5.5"

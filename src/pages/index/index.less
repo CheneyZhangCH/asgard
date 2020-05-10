@@ -1,8 +1,85 @@
 .list {
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    list-style-type: none;
+  }
+
+  .post-list-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    height: 58px;
+    position: relative;
+    padding: 10px;
+
+    .left {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+    .reply-count {
+      position: absolute;
+      bottom: 0;
+      left: 88px;
+    }
+    .last-active-time {
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+    }
+  }
   height: 100%;
   flex: 1;
   border: 1px solid;
 }
+
+.reply-count {
+  text-align: left;
+  line-height: 2em;
+  font-size: 10px;
+}
+
+.last-active-time {
+  text-align: right;
+  min-width: 50px;
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 0.8em;
+  color: #778087;
+}
+
+.post-title {
+  color: #333;
+  max-width: 70%;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1em;
+  line-height: 30px;
+  padding: 0 5px;
+}
+
+.user-avator {
+  padding: 0 5px;
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+  }
+}
+
+.normal-tag {
+  background-color: #e5e5e5;
+  color: #999;
+  padding: 2px 4px;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 0 5px;
+}
+
 .info {
   height: 100%;
   width: 200px;

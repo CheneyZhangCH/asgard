@@ -1,4 +1,4 @@
-import { init, RematchDispatch } from '@rematch/core'
+import { init, RematchDispatch, ExtractRematchStateFromModels } from '@rematch/core'
 import { models, RootModel } from '../models'
 import createLoadingPlugin from '@rematch/loading'
 
@@ -30,5 +30,7 @@ export const store = init<RootModel>({
 window.Store = store
 
 export type Dispatch = RematchDispatch<RootModel>
+
+export type RootState = ExtractRematchStateFromModels<RootModel>
 
 export const dispatch: Dispatch = store.dispatch

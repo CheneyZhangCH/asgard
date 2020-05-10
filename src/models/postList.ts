@@ -29,10 +29,14 @@ export const postList = {
   effects: (dispatch: Dispatch) => ({
     async requestPostList() {
       await new Promise((resolve) => setTimeout(resolve, 500))
-      const user: User = { uid: 'admin', avator: '' }
+      const user: User = {
+        uid: 'admin',
+        avator:
+          'https://img2.woyaogexing.com/2020/05/09/f0675205075e41e08cbc13a18f15bced!400x400.webp',
+      }
       const post: PostListItem = {
         postId: '123',
-        postTitle: 'test post',
+        postTitle: '关于我转生成为史莱姆这件事',
         author: user,
         lastCommentedBy: user,
         tag: 'share',
