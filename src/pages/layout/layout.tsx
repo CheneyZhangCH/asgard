@@ -29,7 +29,7 @@ export default (props: ILayoutProps) => {
           </div>
 
           <div className="menu row-center">
-            <Button type="link" href="/article/new">
+            <Button type="link" href="/post/new">
               发布话题
             </Button>
             {hasLogin ? (
