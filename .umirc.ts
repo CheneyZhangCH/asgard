@@ -22,7 +22,7 @@ export default defineConfig({
       exact: true,
       routes: [
         { path: '/', component: './index/index', exact: true },
-        { path: '/article/new', component: './article/new', exact: true },
+        { path: '/post/new', component: './post/new', exact: true },
       ],
     },
   ],
