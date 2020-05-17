@@ -9,26 +9,31 @@
 
   .post-list-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
     background-color: white;
     height: 58px;
     position: relative;
     padding: 10px;
 
-    .left {
+    .center {
       display: flex;
       justify-content: left;
       align-items: center;
-    }
-    .reply-count {
-      position: absolute;
-      bottom: 0;
-      left: 88px;
     }
     .last-active-time {
       position: absolute;
       bottom: 0;
       right: 10px;
+    }
+    .post-title-box {
+      position: relative;
+      margin-left: 5px;
+      span {
+        position: absolute;
+        left: 0;
+        bottom: -12px;
+      }
     }
   }
   height: 100%;
@@ -59,7 +64,7 @@
   vertical-align: middle;
   font-size: 1em;
   line-height: 30px;
-  padding: 0 5px;
+  // padding: 0 5px;
 }
 
 .user-avator {
