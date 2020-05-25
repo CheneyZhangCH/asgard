@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react'
 import { Slate, Editable, withReact } from 'slate-react'
-import { Editor, Transforms, Range, Point, createEditor } from 'slate'
+import { Editor, Transforms, Range, Point, createEditor, Node } from 'slate'
 import { withHistory } from 'slate-history'
 
 const SHORTCUTS = {
@@ -17,17 +17,16 @@ const SHORTCUTS = {
 }
 
 interface IMarkDownProps {
-  onChange: () => any
+  onChange: (value: Node[]) => void
 }
 
 const MarkdownShortcutsExample = (props: IMarkDownProps) => {
-  const [value, setValue] = useState(initialValue)
-  const onChange = (value) => {
+  const [value, setValue] = useState<Node[]>(initialValue)
+  const onChange = (value: Node[]) => {
     console.log(value)
     setValue(value)
     props.onChange(value)
   }
-
   const renderElement = useCallback((props) => <Element {...props} />, [])
   const editor = useMemo(() => withShortcuts(withReact(withHistory(createEditor()))), [])
   return (

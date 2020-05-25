@@ -1,14 +1,17 @@
 import { React, useState } from '@/common'
 import { MarkdownEdit } from '@/components'
+import { Node } from 'slate'
 import './new.less'
 
 const New: React.FC = () => {
-  const [markdownValue, setMarkDownValue] = useState('')
+  const [markdownValue, setMarkDownValue] = useState<Node[]>(null)
+  const onEdit = (value: Node[]) => {
+    setMarkDownValue(value)
+  }
   return (
     <div className="page">
-      <div className="preview">preview</div>
       <div className="edit">
-        <MarkdownEdit onChange={(value: string) => setMarkDownValue(value)} />
+        <MarkdownEdit onChange={onEdit} />
       </div>
       <div className="tip">tip</div>
     </div>
