@@ -1,5 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react'
 import { Slate, Editable, withReact } from 'slate-react'
+import { RenderElementProps } from 'slate-react/dist/components/editable'
+import { ReactEditor } from 'slate-react/dist/plugin/react-editor'
+
 import { Editor, Transforms, Range, Point, createEditor, Node } from 'slate'
 import { withHistory } from 'slate-history'
 
@@ -16,7 +19,7 @@ const SHORTCUTS = {
   '######': 'heading-six',
 }
 
-interface IMarkDownProps {
+interface IMarkDownProps extends RenderElementProps {
   onChange: (value: Node[]) => void
 }
 
@@ -41,7 +44,9 @@ const MarkdownShortcutsExample = (props: IMarkDownProps) => {
   )
 }
 
-const withShortcuts = (editor) => {
+interface IEditor extends ReactEditor, Editor {}
+
+const withShortcuts = (editor: IEditor): IEditor => {
   const { deleteBackward, insertText } = editor
 
   editor.insertText = (text) => {
@@ -110,7 +115,8 @@ const withShortcuts = (editor) => {
   return editor
 }
 
-const Element = ({ attributes, children, element }) => {
+const Element = (props: RenderElementProps) => {
+  const { attributes, children, element } = props
   switch (element.type) {
     case 'block-quote':
       return <blockquote {...attributes}>{children}</blockquote>
